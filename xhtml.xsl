@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:editlink="http://oxygenxml.com/xslt/editlink/"
-    exclude-result-prefixes="xs editlink"
-    version="2.0">
+<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:editlink="http://oxygenxml.com/xslt/editlink/" exclude-result-prefixes="xs editlink" version="2.0">
+
   
   <xsl:import href="link.xsl"/>
   
@@ -14,10 +10,14 @@
   <xsl:param name="editlink.local.ditaval.path"/>
   
   <!-- Override the topic/title processing to add 'Edit Link' action. -->  
-  <xsl:template match="*[contains(@class, ' topic/topic ')]/*[contains(@class, ' topic/title ')]">
-    <xsl:choose>
-      <xsl:when test="string-length($editlink.remote.ditamap.url) > 0 
-        or $editlink.present.only.path.to.topic = 'true'">
+  <xsl:template match="*[contains(@class, ' topic/topic ')]/*[contains(@class, ' topic/title ')]"><xsl:if test=". instance of element()"><xsl:comment>d3e18:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if>
+    <xsl:if test=". instance of element()">
+<xsl:comment>d3e20:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if><xsl:choose>
+      <xsl:when test="string-length($editlink.remote.ditamap.url) &gt; 0          or $editlink.present.only.path.to.topic = 'true'"><xsl:if test=". instance of element()"><xsl:comment>d3e22:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if>
+
         <!-- Get the default output in a temporary variable -->
         <xsl:variable name="topicTitleFragment">
           <xsl:next-match/>
@@ -28,7 +28,8 @@
           <xsl:with-param name="xtrf" select="@xtrf" tunnel="yes"/>
         </xsl:apply-templates>  
       </xsl:when>
-      <xsl:otherwise>
+      <xsl:otherwise><xsl:if test=". instance of element()"><xsl:comment>d3e39:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if>
         <xsl:next-match/>
       </xsl:otherwise>
     </xsl:choose>
@@ -36,8 +37,8 @@
   </xsl:template>
   
   <!-- Add a span element associated with the 'Edit Link' action -->
-  <xsl:template match="*[starts-with(local-name(), 'h')]" mode="add-edit-link" priority="5">
-    <xsl:param name="xtrf" tunnel="yes"/>
+  <xsl:template match="*[starts-with(local-name(), 'h')]" mode="add-edit-link" priority="5"><xsl:param name="xtrf" tunnel="yes"/><xsl:if test=". instance of element()"><xsl:comment>d3e48:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if>
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="#current"/>
       <xsl:attribute name="style">display:table; width:100%;</xsl:attribute>
@@ -47,11 +48,15 @@
       
       <!-- The edit link -->
       <span class="edit-link">
-        <xsl:choose>
-          <xsl:when test="$editlink.present.only.path.to.topic = 'true'">
+        <xsl:if test=". instance of element()">
+<xsl:comment>d3e67:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if><xsl:choose>
+          <xsl:when test="$editlink.present.only.path.to.topic = 'true'"><xsl:if test=". instance of element()"><xsl:comment>d3e69:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if>
             <xsl:value-of select="editlink:makeRelative(editlink:toUrl($editlink.local.ditamap.path), $xtrf)"/>
           </xsl:when>
-          <xsl:otherwise>
+          <xsl:otherwise><xsl:if test=". instance of element()"><xsl:comment>d3e74:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if>
             <a target="_blank">
               <xsl:attribute name="href">
                 <xsl:value-of select="editlink:compute($editlink.remote.ditamap.url, $editlink.local.ditamap.path, $xtrf, $editlink.web.author.url, $editlink.local.ditaval.path)"/>
@@ -77,7 +82,8 @@
   </xsl:template>
 
   <!-- Copy template for the add-edit-link mode -->
-  <xsl:template match="node() | @*" mode="add-edit-link">
+  <xsl:template match="node() | @*" mode="add-edit-link"><xsl:if test=". instance of element()"><xsl:comment>d3e98:xhtml.xsl</xsl:comment><xsl:text>
+</xsl:text></xsl:if>
     <xsl:copy>
       <xsl:apply-templates select="node() | @*" mode="#current"/>
     </xsl:copy>
