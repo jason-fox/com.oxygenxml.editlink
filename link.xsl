@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:editlink="http://oxygenxml.com/xslt/editlink/" xmlns:local="urn:localfunctions" version="2.0" exclude-result-prefixes="editlink xs local">
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:editlink="http://oxygenxml.com/xslt/editlink/"
+    xmlns:local="urn:localfunctions"
+    exclude-result-prefixes="editlink xs local"  
+    >
     <!-- Computes the Web Author link to be opened for a given topic in the context of a given map. -->
     <xsl:function name="editlink:compute" as="xs:string">
         <!-- The URL of the DITA map, as required by Web Author. -->
@@ -49,11 +55,11 @@
         <xsl:param name="topic" as="xs:string"/>
 
         <xsl:variable name="normalizedMap" as="xs:string">
-            <xsl:value-of select="tokenize($map, '/')[.!='' and .!='.' and position()!=last()]" separator="/"/>
+            <xsl:value-of select="tokenize($map, '/')[.!='' and .!='.' and position()!=last()]" separator="/" />
         </xsl:variable>
         <xsl:variable name="mapBase" as="xs:string" select="concat($normalizedMap, '/')"/>
         <xsl:variable name="normalizedTopic" as="xs:string">
-            <xsl:value-of select="tokenize($topic, '/')[.!='' and .!='.']" separator="/"/>
+            <xsl:value-of select="tokenize($topic, '/')[.!='' and .!='.']" separator="/" />
         </xsl:variable>
 
         <xsl:choose>
@@ -78,9 +84,24 @@
     <!-- Translates a file path to a file:// URL. -->
     <xsl:function name="editlink:toUrl" as="xs:string">
         <xsl:param name="filepath" as="xs:string"/>
-        <xsl:variable name="url" as="xs:string" select="if (contains($filepath, '\'))             then translate($filepath, '\', '/')             else $filepath             "/>
-        <xsl:variable name="fileUrl" as="xs:string" select="             if (matches($url, '^[a-zA-Z]:'))             then concat('file:/', $url)             else if (starts-with($url, '/'))              then concat('file:', $url)              else $url             "/>
-        <xsl:variable name="escapedUrl" select="replace($fileUrl, ' ', '%20')"/>
+        <xsl:variable name="url" as="xs:string"
+            select="if (contains($filepath, '\'))
+            then translate($filepath, '\', '/')
+            else $filepath
+            "
+        />
+        <xsl:variable name="fileUrl" as="xs:string"
+            select="
+            if (matches($url, '^[a-zA-Z]:'))
+            then concat('file:/', $url)
+            else if (starts-with($url, '/')) 
+            then concat('file:', $url) 
+            else $url
+            "
+        />
+        <xsl:variable name="escapedUrl" 
+            select="replace($fileUrl, ' ', '%20')"
+        />
         <xsl:sequence select="$escapedUrl"/>
     </xsl:function>
 </xsl:stylesheet>
