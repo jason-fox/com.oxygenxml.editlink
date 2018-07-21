@@ -1,5 +1,7 @@
 # DITA-OT EditLink plugin
 
+[![Build Status](https://travis-ci.org/jason-fox/com.oxygenxml.editlink.svg?branch=master)](https://travis-ci.org/jason-fox/com.oxygenxml.editlink.svrl)
+
 This plugin is compatible with DITA OT 2.x and it allows you to add references to the original DITA topic after each presented topic title both in the PDF and XHTML-based outputs.
 
 To add "Edit" links to each topic title for editing the original topics in the oXygen XML Web Author you need to set the following Ant properties:
