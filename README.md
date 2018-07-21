@@ -1,6 +1,10 @@
 # DITA-OT EditLink plugin
 
+[![DITA-OT 3.1](https://img.shields.io/badge/DITA--OT-3.1-blue.svg)](http://www.dita-ot.org/3.1)
 [![Build Status](https://travis-ci.org/jason-fox/com.oxygenxml.editlink.svg?branch=master)](https://travis-ci.org/jason-fox/com.oxygenxml.editlink)
+[![Coverage](https://img.shields.io/badge/Coverage-61%25-yellow.svg)](https://jason-fox.github.io/com.oxygenxml.editlink/coverage.html)
+[![Unit Tests](https://img.shields.io/badge/Unit--Tests-2-blue.svg)](https://jason-fox.github.io/com.oxygenxml.editlink/test-results.html)
+[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 This plugin is compatible with DITA OT 2.x and it allows you to add references to the original DITA topic after each presented topic title both in the PDF and XHTML-based outputs.
 
