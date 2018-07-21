@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-03.dtd"-->
+<coverage line-rate="0.9" branch-rate="0.75" version="1.9" timestamp="1187350905008">	
+	<packages>
+		<package name="" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+			<classes/>
+		</package>
+		<package name="" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+			<classes/>
+		</package>
+	</packages>
+</coverage>

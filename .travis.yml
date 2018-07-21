@@ -6,9 +6,12 @@ env:
 before_script:
   - zip -r com.oxygenxml.editlink.zip . -x *.zip* *.git/* *temp/* *out/*
   - curl -LO https://github.com/dita-ot/dita-ot/releases/download/$DITA_OT/dita-ot-$DITA_OT.zip
-  - unzip -q dita-ot-$DITA_OT.zip
-  - chmod +x dita-ot-$DITA_OT/bin/dita
-  - dita-ot-$DITA_OT/bin/dita --install https://github.com/jason-fox/fox.jason.unit-test/archive/master.zip
-  - dita-ot-$DITA_OT/bin/dita --install com.oxygenxml.editlink.zip 
+  - unzip -q dita-ot-3.1.zip
+  - chmod +x dita-ot-3.1/bin/dita
+  - dita-ot-3.1/bin/dita --install https://github.com/jason-fox/fox.jason.unit-test/archive/master.zip
+  - dita-ot-3.1/bin/dita --install com.oxygenxml.editlink.zip 
 script:
-  - dita-ot-$DITA_OT/bin/dita --input dita-ot-$DITA_OT/plugins/com.oxygenxml.editlink -f unit-test -v
+  - dita-ot-3.1/bin/dita --input dita-ot-3.1/plugins/com.oxygenxml.editlink -f unit-test -v
+
+after_success:
+  - mvn clean org.eluder.coveralls:coveralls-maven-plugin:report
