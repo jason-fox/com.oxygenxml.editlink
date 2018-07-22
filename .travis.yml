@@ -11,8 +11,9 @@ before_script:
   - dita-ot-3.1/bin/dita --install https://github.com/jason-fox/fox.jason.unit-test/archive/master.zip
   - dita-ot-3.1/bin/dita --install com.oxygenxml.editlink.zip
   - cp dita-ot-3.1/plugins/fox.jason.unit-test/resource/pom.xml pom.xml
-  - dita-ot-3.1/bin/dita --input dita-ot-3.1/plugins/com.oxygenxml.editlink -f xsl-instrument
+  
 script:
+  - dita-ot-3.1/bin/dita --input dita-ot-3.1/plugins/com.oxygenxml.editlink -f xsl-instrument -v
   - dita-ot-3.1/bin/dita --input dita-ot-3.1/plugins/com.oxygenxml.editlink -f unit-test --output . -v
 after_success:
   - mvn clean org.eluder.coveralls:coveralls-maven-plugin:report
