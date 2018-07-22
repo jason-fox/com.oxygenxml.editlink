@@ -9,7 +9,10 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
- 
+
+
+
+
   <build>
     <plugins>
       <plugin>
@@ -22,6 +25,7 @@
           </sourceDirectories>
           <sourceEncoding>UTF-8</sourceEncoding>
           <coberturaReports>./cobertura.xml</coberturaReports>
+           <!--dryRun>true</dryRun-->
         </configuration>
       </plugin>
       <plugin>
